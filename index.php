@@ -14,6 +14,7 @@
     <th>Password</th>
     <th>Level</th>
     <th>Fullname</th>
+  <th>Aksi</th>
   </tr>
   </div>
   <?php
@@ -25,15 +26,18 @@
   $peserta=mysqli_query($conn,$sql_tampil);
   // 4. Lakukan fetch dengan result type MYSQL_ASSOC
   while($baris_data=mysqli_fetch_array($peserta,MYSQLI_ASSOC)){
-    echo'
+   ?> 
     </tr>
-      <td>'.$baris_data['Id'].'</td>
-      <td>'.$baris_data['Username'].'</td>
-      <td>'.$baris_data['Password'].'</td>
-      <td>'.$baris_data['Level'].'</td>
-      <td>'.$baris_data['Fullname'].'</td>
+      <td><?php echo $baris_data['Id']; ?></td>
+      <td><?php echo $baris_data['Username']; ?></td>
+      <td><?php echo $baris_data['Password']; ?></td>
+      <td><?php echo $baris_data['Level']; ?></td>
+      <td><?php echo $baris_data['Fullname']; ?></td>
+      <td>
+      <a class="edit" href="edit.php?Id=<?php echo $baris_data['Id']; ?>">Edit</a> |
+      <a class="hapus" href="delete.php?Id=<?php echo $baris_data['Id']; ?>">Hapus</a>
+      </td>
     </tr>';
-  }
-  ?>
+  <?php } ?>
 </body>
 </html>
